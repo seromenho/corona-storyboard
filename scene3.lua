@@ -34,13 +34,30 @@ function scene:createScene( event )
 
         -----------------------------------------------------------------------------
         
+        local widget = require( "widget" )
+        
         local myText = display.newText( "Hello World! I'm scene 3", 100, 300, native.systemFont, 16 )
 	myText:setFillColor( 1, 0, 0 )
 
-	group:insert(myText)
+        local freturn = function( event )
+                storyboard.gotoScene("menu")
+                end
+        
+        local return1 = widget.newButton
+        {
+                defaultFile = "buttonRed.png",
+                overFile = "buttonRedOver.png",
+                label = "Return",
+                emboss = true,
+                onPress = freturn,
+        }
+
+        return1.x = 160; return1.y = 60
+
+        group:insert(myText)
+        group:insert(return1)
 
 end
-
 
 -- Called BEFORE scene has moved onscreen:
 function scene:willEnterScene( event )
